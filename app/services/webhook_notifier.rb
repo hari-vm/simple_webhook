@@ -1,6 +1,6 @@
 class WebhookNotifier
-  def initialize(post)
-    @post = post
+  def initialize(article)
+    @article = article
     @endpoints = Rails.application.config.webhooks[:endpoints]
     @secret_token = Rails.application.config.webhooks[:secret_token]
   end
@@ -24,10 +24,10 @@ class WebhookNotifier
   def payload
     {
       post: {
-        id: @post.id,
-        title: @post.title,
-        content: @post.content,
-        updated_at: @post.updated_at
+        id: @article.id,
+        title: @article.title,
+        content: @article.content,
+        updated_at: @article.updated_at
       }
     }.to_json
   end

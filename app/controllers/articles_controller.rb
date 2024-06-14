@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content)
   end
 
-  def notify_third_parties(post)
-    WebhookNotifier.new(post).notify
+  def notify_third_parties(article)
+    WebhookNotifier.new(article).notify
   end
 end
